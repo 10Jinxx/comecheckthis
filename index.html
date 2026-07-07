@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio | Signal Operations</title>
+    <title>Ajinkya Awachar | Portfolio</title>
     <meta name="description" content="A polished, dashboard-inspired portfolio for a product-focused technology leader in AI, analytics, compliance, and enterprise platforms." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -106,11 +106,23 @@
       }
 
       .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
         font-family: "IBM Plex Mono", monospace;
         font-size: 0.8rem;
         letter-spacing: 0.24em;
         text-transform: uppercase;
         color: var(--cyan);
+      }
+
+      .header-photo {
+        width: 2.2rem;
+        height: 2.2rem;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
       }
 
       .top-nav {
@@ -194,6 +206,49 @@
         box-shadow: 0 14px 40px rgba(0, 0, 0, 0.16);
       }
 
+      .hero-grid {
+        position: absolute;
+        inset: 0;
+        background-image: linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+        background-size: 64px 64px;
+        opacity: 0.35;
+        mask-image: radial-gradient(ellipse 80% 60% at 50% 20%, black 10%, transparent 75%);
+        pointer-events: none;
+      }
+
+      .hero-net {
+        position: absolute;
+        top: -40px;
+        right: -140px;
+        width: 760px;
+        height: 640px;
+        opacity: 0.9;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .hero-net line {
+        stroke: rgba(79, 216, 196, 0.35);
+        stroke-width: 1.6;
+        stroke-linecap: round;
+      }
+
+      .hero-net .hero-node {
+        fill: var(--cyan);
+        opacity: 0;
+      }
+
+      .hero-net .hero-node-anomaly {
+        fill: var(--amber);
+      }
+
+      .hero-net .hero-pulse {
+        fill: none;
+        stroke: var(--amber);
+        stroke-width: 1.3;
+        opacity: 0;
+      }
+
       .hero::before {
         content: "";
         position: absolute;
@@ -202,7 +257,8 @@
         pointer-events: none;
       }
 
-      .hero-content {
+      .hero-content,
+      .hero-visual {
         position: relative;
         z-index: 1;
       }
@@ -480,9 +536,44 @@
 
       .panel-card:hover,
       .case-file:hover,
-      .skill-card:hover {
+      .skill-card:hover,
+      .edu-card:hover {
         transform: translateY(-4px);
         border-color: rgba(79, 216, 196, 0.32);
+      }
+
+      .education-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      .edu-card {
+        padding: 1rem;
+        border-radius: 18px;
+        background: linear-gradient(145deg, rgba(79, 216, 196, 0.12), rgba(255, 255, 255, 0.03));
+        border: 1px solid rgba(79, 216, 196, 0.22);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      }
+
+      .edu-card strong {
+        display: block;
+        color: var(--text-strong);
+        margin-bottom: 0.35rem;
+      }
+
+      .edu-card .edu-school {
+        color: var(--text);
+        font-size: 0.95rem;
+        margin-bottom: 0.2rem;
+      }
+
+      .edu-card .edu-period {
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 0.74rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--amber);
       }
 
       .quote-card {
@@ -582,6 +673,51 @@
       .tag.alert {
         background: rgba(242, 169, 59, 0.12);
         color: var(--amber);
+      }
+
+      .info-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.7rem;
+        margin-top: 0.95rem;
+        color: var(--text-strong);
+        font-size: 0.95rem;
+      }
+
+      .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      .contact-card {
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+        padding: 1rem 1.05rem;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        transition: transform 220ms ease, border-color 220ms ease;
+      }
+
+      .contact-card:hover {
+        transform: translateY(-3px);
+        border-color: rgba(79, 216, 196, 0.32);
+      }
+
+      .contact-card .clabel {
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 0.7rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--amber);
+      }
+
+      .contact-card .cval {
+        color: var(--text-strong);
+        font-size: 0.95rem;
       }
 
       .footer-cta {
@@ -706,7 +842,10 @@
   <body>
     <div class="site-shell">
       <header class="top-bar">
-        <a class="brand" href="#top">Signal / Control Room</a>
+        <a class="brand" href="#top">
+          <img class="header-photo" src="IMG_8902.png" alt="Ajinkya Awachar" />
+          <span>Ajinkya Awachar</span>
+        </a>
         <nav class="top-nav" aria-label="Primary navigation">
           <a href="#about">About</a>
           <a href="#skills">Skills</a>
@@ -723,13 +862,17 @@
 
       <main id="top">
         <section class="hero reveal">
+          <div class="hero-grid"></div>
+          <svg class="hero-net" id="heroNetwork" viewBox="0 0 760 640" aria-hidden="true">
+            <g id="heroEdges"></g>
+            <g id="heroNodes"></g>
+          </svg>
           <div class="hero-content">
             <p class="eyebrow">Product-led technology leadership</p>
-            <h1>Building systems that turn signal into action.</h1>
+            <h1>Turning complex signal into calm, trusted action.</h1>
             <p class="intro">
-              I lead product and engineering work at the intersection of AI, data analytics,
-              compliance, and enterprise platforms—designing observability and decision systems
-              that help organizations move quickly without losing control.
+              I’m Ajinkya Awachar, a product-focused technology leader building AI, analytics,
+              compliance, and platform systems that help teams move fast without losing control.
             </p>
             <div class="hero-actions">
               <a class="btn btn-primary" href="#work">Explore case files</a>
@@ -815,16 +958,43 @@
               <p>
                 I work across product, engineering, and strategy to build reliable platforms that sit
                 at the center of modern operations. My focus is connecting the right signals to the
-                right decisions—through thoughtful product design, strong data foundations, and a clear
+                right decisions through thoughtful product design, strong data foundations, and a clear
                 sense of operational risk.
               </p>
+              <div class="info-row">
+                <span class="tag">Education</span>
+                <span>College details — add from your CV</span>
+              </div>
             </article>
             <article class="quote-card">
               <blockquote>
-                “The best systems are not just intelligent—they are observable, accountable, and calm
-                under pressure.”
+                “I bring structure to complex systems and clarity to high-stakes decisions.”
               </blockquote>
-              <div class="attribution">philosophy</div>
+              <div class="attribution">Ajinkya Awachar</div>
+            </article>
+          </div>
+        </section>
+
+        <section id="education" class="section reveal">
+          <div class="section-heading">
+            <h2>Education</h2>
+            <p>Academic background that shaped a blend of business, international exposure, and technical depth.</p>
+          </div>
+          <div class="education-grid">
+            <article class="edu-card">
+              <strong>Master of Business Administration (MBA)- IB</strong>
+              <div class="edu-school">Indian Institute of Foreign Trade (IIFT), New Delhi</div>
+              <div class="edu-period">2022 – 2025</div>
+            </article>
+            <article class="edu-card">
+              <strong>Exchange MBA- IB</strong>
+              <div class="edu-school">Grenoble Ecole de Management, France</div>
+              <div class="edu-period">2024</div>
+            </article>
+            <article class="edu-card">
+              <strong>B.E. Computer Science</strong>
+              <div class="edu-school">Medicaps Institute, Indore</div>
+              <div class="edu-period">2015 – 2019</div>
             </article>
           </div>
         </section>
@@ -954,6 +1124,27 @@
         </section>
 
         <section class="section reveal">
+          <div class="section-heading">
+            <h2>Let’s connect</h2>
+            <p>I’m always interested in thoughtful conversations around product leadership, AI systems, and dependable digital operations.</p>
+          </div>
+          <div class="contact-grid">
+            <a class="contact-card" href="#">
+              <span class="clabel">LinkedIn</span>
+              <span class="cval">Add your profile</span>
+            </a>
+            <a class="contact-card" href="#">
+              <span class="clabel">GitHub</span>
+              <span class="cval">Add your repository</span>
+            </a>
+            <a class="contact-card" href="#">
+              <span class="clabel">Email</span>
+              <span class="cval">Add your email</span>
+            </a>
+          </div>
+        </section>
+
+        <section class="section reveal">
           <div class="footer-cta">
             <div>
               <p class="eyebrow">System closeout</p>
@@ -1005,6 +1196,102 @@
       const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
       const lines = Array.from(document.querySelectorAll(".network-line"));
       const nodes = Array.from(document.querySelectorAll(".node"));
+
+      const heroNetwork = document.getElementById("heroNetwork");
+      if (heroNetwork) {
+        const svgNS = "http://www.w3.org/2000/svg";
+        const heroEdges = document.getElementById("heroEdges");
+        const heroNodes = document.getElementById("heroNodes");
+        const heroPoints = [
+          [80, 70],
+          [220, 40],
+          [360, 90],
+          [520, 60],
+          [660, 110],
+          [120, 220],
+          [280, 240],
+          [440, 210],
+          [600, 260],
+          [90, 380],
+          [260, 400],
+          [430, 370],
+          [590, 410],
+          [150, 530],
+          [330, 560],
+          [500, 540],
+          [650, 500]
+        ];
+
+        function dist(a, b) {
+          return Math.hypot(a[0] - b[0], a[1] - b[1]);
+        }
+
+        const heroEdgesList = [];
+        heroPoints.forEach((point, index) => {
+          const distances = heroPoints
+            .map((candidate, candidateIndex) => ({ candidateIndex, distance: dist(point, candidate) }))
+            .filter((entry) => entry.candidateIndex !== index)
+            .sort((a, b) => a.distance - b.distance);
+
+          distances.slice(0, 2).forEach((entry) => {
+            const key = [index, entry.candidateIndex].sort().join("-");
+            if (!heroEdgesList.some((edge) => edge.key === key)) {
+              heroEdgesList.push({ key, a: index, b: entry.candidateIndex });
+            }
+          });
+        });
+
+        heroEdgesList.forEach((edge, index) => {
+          const [x1, y1] = heroPoints[edge.a];
+          const [x2, y2] = heroPoints[edge.b];
+          const line = document.createElementNS(svgNS, "line");
+          line.setAttribute("x1", x1);
+          line.setAttribute("y1", y1);
+          line.setAttribute("x2", x2);
+          line.setAttribute("y2", y2);
+          const length = Math.hypot(x2 - x1, y2 - y1);
+          if (!reducedMotion.matches) {
+            line.setAttribute("stroke-dasharray", length);
+            line.setAttribute("stroke-dashoffset", length);
+            line.style.animation = `drawHero 1.2s ease forwards ${0.1 + index * 0.04}s`;
+          }
+          heroEdges.appendChild(line);
+        });
+
+        heroPoints.forEach((point, index) => {
+          const node = document.createElementNS(svgNS, "circle");
+          node.setAttribute("cx", point[0]);
+          node.setAttribute("cy", point[1]);
+          node.setAttribute("r", index === 8 ? 7 : 4.5);
+          node.setAttribute("class", index === 8 ? "hero-node hero-node-anomaly" : "hero-node");
+          node.style.opacity = reducedMotion.matches ? "1" : "0";
+          if (!reducedMotion.matches) {
+            node.style.animation = `popHero 0.55s ease forwards ${0.5 + index * 0.04}s`;
+          }
+          heroNodes.appendChild(node);
+
+          if (index === 8 && !reducedMotion.matches) {
+            const pulse = document.createElementNS(svgNS, "circle");
+            pulse.setAttribute("cx", point[0]);
+            pulse.setAttribute("cy", point[1]);
+            pulse.setAttribute("r", 7);
+            pulse.setAttribute("class", "hero-pulse");
+            pulse.style.animation = "ringHero 2.2s ease-out infinite 2s";
+            heroNodes.appendChild(pulse);
+          }
+        });
+
+        const heroStyle = document.createElement("style");
+        heroStyle.textContent = `
+          @keyframes drawHero { to { stroke-dashoffset: 0; } }
+          @keyframes popHero { to { opacity: 1; } }
+          @keyframes ringHero {
+            0% { r: 7; opacity: 0.85; }
+            100% { r: 24; opacity: 0; }
+          }
+        `;
+        document.head.appendChild(heroStyle);
+      }
 
       function animateNetwork() {
         if (reducedMotion.matches) {

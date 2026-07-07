@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio | Signal Operations</title>
+    <meta name="description" content="A polished, dashboard-inspired portfolio for a product-focused technology leader in AI, analytics, compliance, and enterprise platforms." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #0b1220;
+        --panel: #121a2b;
+        --panel-2: #17233a;
+        --text: #93a4bf;
+        --text-strong: #dfe8f7;
+        --cyan: #4fd8c4;
+        --amber: #f2a93b;
+        --border: rgba(147, 164, 191, 0.18);
+        --shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background:
+          radial-gradient(circle at top left, rgba(79, 216, 196, 0.14), transparent 32%),
+          linear-gradient(135deg, var(--bg), #070d17 100%);
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background-image: linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+        background-size: 48px 48px;
+        mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.45), transparent);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .site-shell {
+        width: min(1200px, calc(100% - 2rem));
+        margin: 0 auto;
+        padding: 1rem 0 4rem;
+      }
+
+      .top-bar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 1rem 1.2rem;
+        margin-top: 0.6rem;
+        background: rgba(18, 26, 43, 0.82);
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        backdrop-filter: blur(16px);
+        box-shadow: var(--shadow);
+      }
+
+      .brand {
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 0.8rem;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        color: var(--cyan);
+      }
+
+      .top-nav {
+        display: flex;
+        gap: 1.1rem;
+        flex-wrap: wrap;
+      }
+
+      .top-nav a {
+        font-size: 0.95rem;
+        color: var(--text);
+        transition: color 180ms ease;
+      }
+
+      .top-nav a:hover,
+      .top-nav a:focus-visible {
+        color: var(--cyan);
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        border: 1px solid rgba(79, 216, 196, 0.35);
+        color: var(--text-strong);
+        padding: 0.7rem 0.95rem;
+        border-radius: 999px;
+        font-size: 0.85rem;
+        font-family: "IBM Plex Mono", monospace;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+      }
+
+      .status-ticker {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        margin: 1rem 0 2rem;
+        padding: 0.8rem 1rem;
+        border-radius: 999px;
+        background: rgba(18, 26, 43, 0.7);
+        border: 1px solid var(--border);
+        color: var(--text-strong);
+        font-family: "IBM Plex Mono", monospace;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        font-size: 0.74rem;
+        overflow: hidden;
+      }
+
+      .status-dot {
+        width: 0.7rem;
+        height: 0.7rem;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--cyan), var(--amber));
+        box-shadow: 0 0 0.8rem rgba(79, 216, 196, 0.6);
+        flex-shrink: 0;
+      }
+
+      .status-text {
+        white-space: nowrap;
+        transition: opacity 240ms ease;
+      }
+
+      main {
+        display: grid;
+        gap: 1.3rem;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 1.4rem;
+        align-items: center;
+        padding: 2.2rem;
+        background: linear-gradient(145deg, rgba(18, 26, 43, 0.95), rgba(10, 16, 28, 0.97));
+        border: 1px solid var(--border);
+        border-radius: 28px;
+        box-shadow: var(--shadow);
+      }
+
+      .eyebrow {
+        margin: 0 0 0.8rem;
+        color: var(--cyan);
+        font-family: "IBM Plex Mono", monospace;
+        text-transform: uppercase;
+        letter-spacing: 0.24em;
+        font-size: 0.75rem;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        color: var(--text-strong);
+        font-family: "Space Grotesk", "Inter", sans-serif;
+        letter-spacing: -0.02em;
+      }
+
+      h1 {
+        font-size: clamp(2.15rem, 3.8vw, 3.6rem);
+        line-height: 1.05;
+        margin: 0 0 1rem;
+        max-width: 12ch;
+      }
+
+      .intro {
+        font-size: 1.02rem;
+        max-width: 64ch;
+        margin: 0 0 1.3rem;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+        margin-bottom: 1.1rem;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        padding: 0.8rem 1.1rem;
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 0.78rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        transition: transform 180ms ease, box-shadow 180ms ease;
+      }
+
+      .btn:hover,
+      .btn:focus-visible {
+        transform: translateY(-2px);
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, rgba(79, 216, 196, 0.92), rgba(79, 216, 196, 0.75));
+        color: #031016;
+        box-shadow: 0 10px 30px rgba(79, 216, 196, 0.22);
+      }
+
+      .btn-secondary {
+        border: 1px solid var(--border);
+        color: var(--text-strong);
+      }
+
+      .hero-highlights {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.55rem;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .hero-highlights li {
+        padding: 0.56rem 0.8rem;
+        border-radius: 999px;
+        background: rgba(79, 216, 196, 0.08);
+        border: 1px solid rgba(79, 216, 196, 0.16);
+        color: var(--text-strong);
+        font-size: 0.84rem;
+      }
+
+      .hero-visual .panel {
+        padding: 1rem;
+        border-radius: 24px;
+        background: linear-gradient(160deg, rgba(23, 35, 58, 0.95), rgba(11, 18, 32, 0.96));
+        border: 1px solid var(--border);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+      }
+
+      .panel-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.8rem;
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 0.74rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--text-strong);
+      }
+
+      .status-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        padding: 0.4rem 0.6rem;
+        border-radius: 999px;
+        background: rgba(242, 169, 59, 0.14);
+        color: var(--amber);
+      }
+
+      .network-svg {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .network-line {
+        fill: none;
+        stroke: rgba(79, 216, 196, 0.35);
+        stroke-width: 2.2;
+        stroke-linecap: round;
+        stroke-dasharray: 1000;
+        stroke-dashoffset: 1000;
+        transition: stroke-dashoffset 1.2s ease;
+      }
+
+      .network-line.drawn {
+        stroke-dashoffset: 0;
+      }
+
+      .node {
+        fill: var(--cyan);
+        stroke: rgba(255, 255, 255, 0.2);
+        stroke-width: 1.2;
+      }
+
+      .node-anomaly {
+        fill: var(--amber);
+        animation: pulse 2.5s ease-in-out infinite;
+      }
+
+      .legend {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.7rem;
+        margin-top: 0.75rem;
+        font-size: 0.8rem;
+        color: var(--text);
+      }
+
+      .legend span {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        padding: 0.42rem 0.62rem;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .legend i {
+        width: 0.7rem;
+        height: 0.7rem;
+        border-radius: 50%;
+        display: inline-block;
+      }
+
+      .legend .cyan { background: var(--cyan); }
+      .legend .amber { background: var(--amber); }
+
+      .section {
+        padding: 1.3rem 0 0.4rem;
+      }
+
+      .section-heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .section-heading h2 {
+        font-size: 1.35rem;
+        margin: 0;
+      }
+
+      .section-heading p {
+        margin: 0;
+        max-width: 52ch;
+        color: var(--text);
+      }
+
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 1rem;
+      }
+
+      .panel-card,
+      .case-file,
+      .skill-card,
+      .quote-card {
+        padding: 1.1rem;
+        border-radius: 22px;
+        background: linear-gradient(145deg, rgba(18, 26, 43, 0.96), rgba(12, 18, 31, 0.95));
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+        transition: transform 220ms ease, border-color 220ms ease;
+      }
+
+      .panel-card:hover,
+      .case-file:hover,
+      .skill-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(79, 216, 196, 0.32);
+      }
+
+      .quote-card {
+        background: linear-gradient(145deg, rgba(20, 30, 50, 0.98), rgba(15, 23, 37, 0.97));
+      }
+
+      .quote-card blockquote {
+        margin: 0;
+        font-size: 1.12rem;
+        color: var(--text-strong);
+      }
+
+      .quote-card .attribution {
+        margin-top: 0.8rem;
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 0.76rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--amber);
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      .skill-card h3 {
+        margin: 0 0 0.5rem;
+        font-size: 1.05rem;
+      }
+
+      .skill-card p {
+        margin: 0;
+        color: var(--text);
+        font-size: 0.95rem;
+      }
+
+      .case-grid {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .case-file .case-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.55rem;
+        margin-bottom: 0.7rem;
+      }
+
+      .case-file h3 {
+        margin: 0 0 0.9rem;
+        font-size: 1.2rem;
+      }
+
+      .case-body {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.8rem;
+      }
+
+      .case-item {
+        padding: 0.85rem;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .case-item h4 {
+        margin: 0 0 0.45rem;
+        color: var(--cyan);
+        font-size: 0.88rem;
+        font-family: "IBM Plex Mono", monospace;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+      }
+
+      .case-item p {
+        margin: 0;
+        font-size: 0.95rem;
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        padding: 0.42rem 0.62rem;
+        border-radius: 999px;
+        background: rgba(79, 216, 196, 0.08);
+        color: var(--text-strong);
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 0.7rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .tag.alert {
+        background: rgba(242, 169, 59, 0.12);
+        color: var(--amber);
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(22px);
+        transition: opacity 560ms ease, transform 560ms ease;
+      }
+
+      .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+          filter: drop-shadow(0 0 0 rgba(242, 169, 59, 0));
+        }
+        50% {
+          transform: scale(1.1);
+          filter: drop-shadow(0 0 10px rgba(242, 169, 59, 0.55));
+        }
+      }
+
+      @media (max-width: 920px) {
+        .hero,
+        .about-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .skills-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 680px) {
+        .site-shell {
+          width: min(100% - 1rem, 1200px);
+          padding-bottom: 3rem;
+        }
+
+        .top-bar {
+          border-radius: 22px;
+          padding: 1rem;
+          flex-wrap: wrap;
+        }
+
+        .top-nav {
+          width: 100%;
+          justify-content: center;
+        }
+
+        .hero {
+          padding: 1.15rem;
+        }
+
+        .case-body,
+        .skills-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .section-heading {
+          flex-direction: column;
+          align-items: start;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+
+        .reveal {
+          opacity: 1;
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="top-bar">
+        <a class="brand" href="#top">Signal / Control Room</a>
+        <nav class="top-nav" aria-label="Primary navigation">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#work">Work</a>
+          <a href="#philosophy">Philosophy</a>
+        </nav>
+        <a class="pill" href="#work">View work</a>
+      </header>
+
+      <div class="status-ticker" aria-live="polite">
+        <span class="status-dot"></span>
+        <span id="tickerText" class="status-text">monitoring active</span>
+      </div>
+
+      <main id="top">
+        <section class="hero reveal">
+          <div>
+            <p class="eyebrow">Product-led technology leadership</p>
+            <h1>Building systems that turn signal into action.</h1>
+            <p class="intro">
+              I lead product and engineering work at the intersection of AI, data analytics,
+              compliance, and enterprise platforms—designing observability and decision systems
+              that help organizations move quickly without losing control.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#work">Explore case files</a>
+              <a class="btn btn-secondary" href="#about">Read bio</a>
+            </div>
+            <ul class="hero-highlights">
+              <li>Fraud detection</li>
+              <li>Multi-agent AI monitoring</li>
+              <li>Compliance workflows</li>
+              <li>Enterprise analytics</li>
+            </ul>
+          </div>
+
+          <div class="hero-visual">
+            <div class="panel">
+              <div class="panel-header">
+                <span>network telemetry</span>
+                <span class="status-badge">active</span>
+              </div>
+              <svg class="network-svg" id="network" viewBox="0 0 520 360" aria-label="Animated monitoring network">
+                <g>
+                  <path class="network-line" d="M95 110 L175 120 L235 195 L315 140 L395 170" />
+                  <path class="network-line" d="M175 120 L235 70 L325 80" />
+                  <path class="network-line" d="M235 195 L315 240 L400 230" />
+                  <path class="network-line" d="M315 140 L360 95 L410 105" />
+                  <path class="network-line" d="M315 240 L365 290 L425 270" />
+                  <path class="network-line" d="M395 170 L430 220" />
+                </g>
+                <g>
+                  <circle class="node" cx="95" cy="110" r="8" />
+                  <circle class="node" cx="175" cy="120" r="8" />
+                  <circle class="node" cx="235" cy="195" r="8" />
+                  <circle class="node" cx="315" cy="140" r="8" />
+                  <circle class="node" cx="395" cy="170" r="8" />
+                  <circle class="node" cx="235" cy="70" r="8" />
+                  <circle class="node" cx="325" cy="80" r="8" />
+                  <circle class="node" cx="315" cy="240" r="8" />
+                  <circle class="node" cx="400" cy="230" r="8" />
+                  <circle class="node" cx="365" cy="290" r="8" />
+                  <circle class="node" cx="425" cy="270" r="8" />
+                  <circle class="node" cx="410" cy="105" r="8" />
+                  <circle class="node" cx="360" cy="95" r="8" />
+                  <circle class="node node-anomaly" cx="430" cy="220" r="9" />
+                </g>
+              </svg>
+              <div class="legend">
+                <span><i class="cyan"></i> monitoring node</span>
+                <span><i class="amber"></i> anomaly detected</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="about" class="section reveal">
+          <div class="section-heading">
+            <h2>About</h2>
+            <p>
+              I design and lead systems that make complex operations legible, traceable, and
+              resilient—whether that means protecting revenue from fraud, clarifying compliance
+              controls, or translating data into product decisions that scale.
+            </p>
+          </div>
+
+          <div class="about-grid">
+            <article class="panel-card">
+              <p>
+                I work across product, engineering, and strategy to build reliable platforms that sit
+                at the center of modern operations. My focus is connecting the right signals to the
+                right decisions—through thoughtful product design, strong data foundations, and a clear
+                sense of operational risk.
+              </p>
+            </article>
+            <article class="quote-card">
+              <blockquote>
+                “The best systems are not just intelligent—they are observable, accountable, and calm
+                under pressure.”
+              </blockquote>
+              <div class="attribution">philosophy</div>
+            </article>
+          </div>
+        </section>
+
+        <section id="skills" class="section reveal">
+          <div class="section-heading">
+            <h2>Capabilities</h2>
+            <p>My work spans the full stack of digital operations: product strategy, platform architecture, AI governance, and analytics execution.</p>
+          </div>
+          <div class="skills-grid">
+            <article class="skill-card">
+              <h3>AI Systems</h3>
+              <p>Designing monitoring, evaluation, and decision-support workflows for multi-agent and predictive systems.</p>
+            </article>
+            <article class="skill-card">
+              <h3>Data Analytics</h3>
+              <p>Translating messy data into trustworthy dashboards, anomaly detection, and operational insight.</p>
+            </article>
+            <article class="skill-card">
+              <h3>Compliance</h3>
+              <p>Building controls and auditable workflows that help products meet regulatory and governance expectations.</p>
+            </article>
+            <article class="skill-card">
+              <h3>Enterprise Platforms</h3>
+              <p>Leading execution across teams, roadmaps, and architecture to unlock reliable scale.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="work" class="section reveal">
+          <div class="section-heading">
+            <h2>Featured work</h2>
+            <p>Structured as case files that focus on the problem, the solution, the role, and the measurable outcome.</p>
+          </div>
+
+          <div class="case-grid">
+            <article class="case-file">
+              <div class="case-meta">
+                <span class="tag">AI</span>
+                <span class="tag alert">Compliance</span>
+              </div>
+              <h3>Fraud Signal Intelligence Platform</h3>
+              <div class="case-body">
+                <div class="case-item">
+                  <h4>Problem</h4>
+                  <p>Fraud and abuse signals were fragmented across teams, making escalation slow and high-risk events hard to triage.</p>
+                </div>
+                <div class="case-item">
+                  <h4>Solution</h4>
+                  <p>I led the design of a monitoring layer that unified event streams, surfaced high-confidence anomalies, and connected operations to action.</p>
+                </div>
+                <div class="case-item">
+                  <h4>My role</h4>
+                  <p>Product lead and systems architect, aligning analytics, engineering, and policy teams around a shared operating model.</p>
+                </div>
+                <div class="case-item">
+                  <h4>Impact</h4>
+                  <p>Reduced false positives, improved review cycle time, and created a more repeatable control framework for high-sensitivity events.</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="case-file">
+              <div class="case-meta">
+                <span class="tag">Data</span>
+                <span class="tag">AI</span>
+              </div>
+              <h3>Operational Analytics Command Center</h3>
+              <div class="case-body">
+                <div class="case-item">
+                  <h4>Problem</h4>
+                  <p>Leadership teams lacked a consistent view of performance, exceptions, and downstream risks across multiple product surfaces.</p>
+                </div>
+                <div class="case-item">
+                  <h4>Solution</h4>
+                  <p>I helped define a modular analytics experience that made key signals visible in real time and easier to act on.</p>
+                </div>
+                <div class="case-item">
+                  <h4>My role</h4>
+                  <p>Strategic product partner, shaping the experience, data model, and governance principles behind the platform.</p>
+                </div>
+                <div class="case-item">
+                  <h4>Impact</h4>
+                  <p>Enabled faster executive decisions and clearer operational accountability across teams.</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="case-file">
+              <div class="case-meta">
+                <span class="tag">Compliance</span>
+                <span class="tag">Data</span>
+              </div>
+              <h3>Evidence and Audit Workflow System</h3>
+              <div class="case-body">
+                <div class="case-item">
+                  <h4>Problem</h4>
+                  <p>Compliance review required too many manual handoffs, creating noise, delay, and inconsistent evidence capture.</p>
+                </div>
+                <div class="case-item">
+                  <h4>Solution</h4>
+                  <p>I led the product direction for a structured workflow that connected evidence, review states, and anomaly context in one flow.</p>
+                </div>
+                <div class="case-item">
+                  <h4>My role</h4>
+                  <p>Product owner translating policy needs into an operational system that teams could actually use under pressure.</p>
+                </div>
+                <div class="case-item">
+                  <h4>Impact</h4>
+                  <p>Improved review traceability, lowered operational friction, and made audit readiness much more reliable.</p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section id="philosophy" class="section reveal">
+          <div class="section-heading">
+            <h2>Approach</h2>
+            <p>My work is shaped by the belief that strong products are built by combining clarity, rigor, and calm execution.</p>
+          </div>
+          <article class="panel-card">
+            <p>
+              I care about building systems that are not only technically capable, but also understandable to the people who rely on them. That means making the invisible visible, designing for trust, and pairing rapid iteration with thoughtful controls.
+            </p>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      const tickerMessages = [
+        "monitoring active",
+        "compliance check — clear",
+        "signal confidence rising",
+        "anomaly review queued"
+      ];
+
+      const tickerText = document.getElementById("tickerText");
+      let tickerIndex = 0;
+
+      function updateTicker() {
+        tickerText.style.opacity = 0;
+        setTimeout(() => {
+          tickerText.textContent = tickerMessages[tickerIndex % tickerMessages.length];
+          tickerIndex += 1;
+          tickerText.style.opacity = 1;
+        }, 180);
+      }
+
+      setInterval(updateTicker, 2800);
+
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+      const lines = Array.from(document.querySelectorAll(".network-line"));
+      const nodes = Array.from(document.querySelectorAll(".node"));
+
+      function animateNetwork() {
+        if (reducedMotion.matches) {
+          lines.forEach((line) => line.classList.add("drawn"));
+          return;
+        }
+
+        lines.forEach((line, index) => {
+          window.setTimeout(() => {
+            line.classList.add("drawn");
+          }, index * 120 + 120);
+        });
+
+        nodes.forEach((node, index) => {
+          if (node.classList.contains("node-anomaly")) return;
+          window.setTimeout(() => {
+            node.animate(
+              [
+                { transform: "scale(0.92)", opacity: 0.7 },
+                { transform: "scale(1)", opacity: 1 }
+              ],
+              { duration: 320, easing: "ease-out", fill: "forwards" }
+            );
+          }, index * 35 + 220);
+        });
+      }
+
+      window.addEventListener("load", animateNetwork);
+
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.16 }
+      );
+
+      document.querySelectorAll(".reveal").forEach((element) => revealObserver.observe(element));
+
+      if (reducedMotion.matches) {
+        document.querySelectorAll(".reveal").forEach((element) => element.classList.add("is-visible"));
+      }
+    </script>
+  </body>
+</html>

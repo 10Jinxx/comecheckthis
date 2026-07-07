@@ -48,9 +48,9 @@
         position: fixed;
         inset: 0;
         pointer-events: none;
-        background-image: linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
-        background-size: 48px 48px;
-        mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.45), transparent);
+        background-image: linear-gradient(rgba(255, 255, 255, 0.012) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
+        background-size: 80px 80px;
+        mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), transparent);
       }
 
       body::after {
@@ -98,11 +98,11 @@
         gap: 1rem;
         padding: 1rem 1.2rem;
         margin-top: 0.6rem;
-        background: rgba(18, 26, 43, 0.82);
-        border: 1px solid var(--border);
+        background: rgba(11, 18, 32, 0.76);
+        border: 1px solid rgba(255, 255, 255, 0.08);
         border-radius: 999px;
         backdrop-filter: blur(16px);
-        box-shadow: var(--shadow);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.16);
       }
 
       .brand {
@@ -187,18 +187,18 @@
         grid-template-columns: 1.1fr 0.9fr;
         gap: 1.4rem;
         align-items: start;
-        padding: 2.2rem;
-        background: linear-gradient(145deg, rgba(18, 26, 43, 0.95), rgba(10, 16, 28, 0.97));
-        border: 1px solid var(--border);
+        padding: 2.4rem;
+        background: rgba(255, 255, 255, 0.025);
+        border: 1px solid rgba(255, 255, 255, 0.08);
         border-radius: 28px;
-        box-shadow: var(--shadow);
+        box-shadow: 0 14px 40px rgba(0, 0, 0, 0.16);
       }
 
       .hero::before {
         content: "";
         position: absolute;
         inset: 0;
-        background: radial-gradient(circle at top right, rgba(242, 169, 59, 0.18), transparent 34%);
+        background: radial-gradient(circle at top right, rgba(79, 216, 196, 0.08), transparent 34%);
         pointer-events: none;
       }
 
@@ -336,13 +336,13 @@
       }
 
       .profile-card {
-        padding: 0.55rem;
+        padding: 0.45rem;
         border-radius: 24px;
-        background: linear-gradient(145deg, rgba(18, 26, 43, 0.96), rgba(12, 18, 31, 0.95));
-        border: 1px solid var(--border);
-        box-shadow: var(--shadow);
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
         align-self: start;
-        width: min(240px, 100%);
+        width: min(220px, 100%);
         margin-left: auto;
       }
 
@@ -472,9 +472,9 @@
       .quote-card {
         padding: 1.1rem;
         border-radius: 22px;
-        background: linear-gradient(145deg, rgba(18, 26, 43, 0.96), rgba(12, 18, 31, 0.95));
-        border: 1px solid var(--border);
-        box-shadow: var(--shadow);
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         transition: transform 220ms ease, border-color 220ms ease;
       }
 

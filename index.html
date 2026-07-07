@@ -321,12 +321,53 @@
         font-size: 0.84rem;
       }
 
+      .hero-visual {
+        display: grid;
+        gap: 1rem;
+      }
+
       .hero-visual .panel {
         padding: 1rem;
         border-radius: 24px;
         background: linear-gradient(160deg, rgba(23, 35, 58, 0.95), rgba(11, 18, 32, 0.96));
         border: 1px solid var(--border);
         box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+      }
+
+      .profile-card {
+        padding: 0.9rem;
+        border-radius: 24px;
+        background: linear-gradient(145deg, rgba(18, 26, 43, 0.96), rgba(12, 18, 31, 0.95));
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+      }
+
+      .profile-card img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 4 / 5;
+        object-fit: cover;
+        border-radius: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        margin-bottom: 0.75rem;
+      }
+
+      .profile-card .profile-caption {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .profile-card h3 {
+        margin: 0;
+        font-size: 1rem;
+      }
+
+      .profile-card p {
+        margin: 0;
+        color: var(--text);
+        font-size: 0.82rem;
       }
 
       .panel-header {
@@ -766,6 +807,16 @@
               <div class="legend">
                 <span><i class="cyan"></i> monitoring node</span>
                 <span><i class="amber"></i> anomaly detected</span>
+              </div>
+            </div>
+            <div class="profile-card">
+              <img src="profile-photo.svg" alt="Profile photo placeholder" />
+              <div class="profile-caption">
+                <div>
+                  <h3>Your photo</h3>
+                  <p>Replace this file with your own image to personalize the page.</p>
+                </div>
+                <span class="tag">PHOTO</span>
               </div>
             </div>
           </div>

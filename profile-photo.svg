@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000" role="img" aria-label="Profile photo placeholder">
+  <rect width="800" height="1000" rx="36" fill="#0b1220"/>
+  <rect x="30" y="30" width="740" height="940" rx="28" fill="#121a2b" stroke="#4fd8c4" stroke-opacity="0.25" stroke-width="3"/>
+  <circle cx="400" cy="360" r="180" fill="#93a4bf" fill-opacity="0.25"/>
+  <circle cx="400" cy="360" r="122" fill="#4fd8c4" fill-opacity="0.16"/>
+  <circle cx="400" cy="340" r="115" fill="#dfe8f7"/>
+  <path d="M255 760c30-150 120-220 145-220s115 70 145 220" fill="#f2a93b" fill-opacity="0.9"/>
+  <path d="M280 360c0-86 60-158 120-158s120 72 120 158c0 56-28 108-72 136-44-28-72-80-72-136Z" fill="#0f1a2b"/>
+  <path d="M320 318c18-74 74-108 80-108 20 0 74 20 88 108" fill="#0f1a2b"/>
+  <circle cx="360" cy="320" r="10" fill="#dfe8f7"/>
+  <circle cx="440" cy="320" r="10" fill="#dfe8f7"/>
+  <path d="M360 380c24 18 56 18 80 0" stroke="#0f1a2b" stroke-width="10" stroke-linecap="round"/>
+  <path d="M290 220c22-67 81-112 142-112 66 0 127 50 146 120" stroke="#4fd8c4" stroke-width="12" stroke-linecap="round" fill="none"/>
+  <rect x="120" y="830" width="560" height="72" rx="24" fill="#4fd8c4" fill-opacity="0.14"/>
+  <text x="400" y="880" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="44" fill="#dfe8f7">YOUR PHOTO</text>
+</svg>

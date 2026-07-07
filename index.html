@@ -34,6 +34,7 @@
 
       body {
         margin: 0;
+        overflow-x: hidden;
         font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         background:
           radial-gradient(circle at top left, rgba(79, 216, 196, 0.14), transparent 32%),
@@ -52,6 +53,19 @@
         mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.45), transparent);
       }
 
+      body::after {
+        content: "";
+        position: fixed;
+        top: -8rem;
+        right: -10rem;
+        width: 32rem;
+        height: 32rem;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(79, 216, 196, 0.16), transparent 62%);
+        filter: blur(20px);
+        pointer-events: none;
+      }
+
       a {
         color: inherit;
         text-decoration: none;
@@ -61,6 +75,17 @@
         width: min(1200px, calc(100% - 2rem));
         margin: 0 auto;
         padding: 1rem 0 4rem;
+      }
+
+      .progress-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 3px;
+        width: 0;
+        z-index: 60;
+        background: linear-gradient(90deg, var(--cyan), var(--amber));
+        box-shadow: 0 0 12px rgba(79, 216, 196, 0.6);
       }
 
       .top-bar {
@@ -156,6 +181,8 @@
       }
 
       .hero {
+        position: relative;
+        overflow: hidden;
         display: grid;
         grid-template-columns: 1.1fr 0.9fr;
         gap: 1.4rem;
@@ -165,6 +192,19 @@
         border: 1px solid var(--border);
         border-radius: 28px;
         box-shadow: var(--shadow);
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at top right, rgba(242, 169, 59, 0.18), transparent 34%);
+        pointer-events: none;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
       }
 
       .eyebrow {
@@ -232,6 +272,35 @@
       .btn-secondary {
         border: 1px solid var(--border);
         color: var(--text-strong);
+      }
+
+      .hero-meta {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.7rem;
+        margin: 0 0 1rem;
+      }
+
+      .hero-meta .metric {
+        padding: 0.7rem 0.8rem;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      .hero-meta .metric strong {
+        display: block;
+        margin-bottom: 0.2rem;
+        color: var(--text-strong);
+        font-size: 0.98rem;
+      }
+
+      .hero-meta .metric span {
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 0.7rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--text);
       }
 
       .hero-highlights {
@@ -489,6 +558,29 @@
         color: var(--amber);
       }
 
+      .footer-cta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        padding: 1.15rem 1.2rem;
+        border-radius: 22px;
+        background: linear-gradient(145deg, rgba(20, 30, 50, 0.98), rgba(12, 19, 33, 0.95));
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+      }
+
+      .footer-cta h2 {
+        margin: 0 0 0.35rem;
+        font-size: 1.25rem;
+      }
+
+      .footer-cta p {
+        margin: 0;
+        max-width: 54ch;
+        color: var(--text);
+      }
+
       .reveal {
         opacity: 0;
         transform: translateY(22px);
@@ -518,6 +610,10 @@
           grid-template-columns: 1fr;
         }
 
+        .hero-meta {
+          grid-template-columns: 1fr;
+        }
+
         .skills-grid {
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
@@ -542,6 +638,11 @@
 
         .hero {
           padding: 1.15rem;
+        }
+
+        .footer-cta {
+          flex-direction: column;
+          align-items: start;
         }
 
         .case-body,
@@ -596,7 +697,7 @@
 
       <main id="top">
         <section class="hero reveal">
-          <div>
+          <div class="hero-content">
             <p class="eyebrow">Product-led technology leadership</p>
             <h1>Building systems that turn signal into action.</h1>
             <p class="intro">
@@ -607,6 +708,20 @@
             <div class="hero-actions">
               <a class="btn btn-primary" href="#work">Explore case files</a>
               <a class="btn btn-secondary" href="#about">Read bio</a>
+            </div>
+            <div class="hero-meta">
+              <div class="metric">
+                <strong>Signal-first</strong>
+                <span>observability</span>
+              </div>
+              <div class="metric">
+                <strong>Control-minded</strong>
+                <span>compliance</span>
+              </div>
+              <div class="metric">
+                <strong>Decision-ready</strong>
+                <span>analytics</span>
+              </div>
             </div>
             <ul class="hero-highlights">
               <li>Fraud detection</li>
@@ -808,10 +923,35 @@
             </p>
           </article>
         </section>
+
+        <section class="section reveal">
+          <div class="footer-cta">
+            <div>
+              <p class="eyebrow">System closeout</p>
+              <h2>Building calm, trustworthy platforms for high-stakes decisions.</h2>
+              <p>From anomaly detection to compliance operations, I focus on making complex systems usable, accountable, and resilient.</p>
+            </div>
+            <a class="btn btn-primary" href="#top">Back to top</a>
+          </div>
+        </section>
       </main>
     </div>
 
     <script>
+      const progressBar = document.createElement("div");
+      progressBar.className = "progress-bar";
+      document.body.prepend(progressBar);
+
+      function updateProgressBar() {
+        const scrollTop = window.scrollY;
+        const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+        progressBar.style.width = `${progress}%`;
+      }
+
+      window.addEventListener("scroll", updateProgressBar, { passive: true });
+      updateProgressBar();
+
       const tickerMessages = [
         "monitoring active",
         "compliance check — clear",
